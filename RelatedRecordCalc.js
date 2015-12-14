@@ -55,7 +55,7 @@
         divTotalAmount.style.textAlign = 'right';
         divTotalAmount.style.fontSize = 12;
         var wString = String(amount.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
-        divTotalAmount.innerHTML = "\\" + wString + "- (" + data_coount + ")";
+        divTotalAmount.innerHTML = "\\" + wString + "- (" + data_count + "件)";
         kintone.app.record.getSpaceElement("TotalAmount").appendChild(divTotalAmount);
 
         return event;
