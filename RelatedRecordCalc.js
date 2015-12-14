@@ -44,8 +44,10 @@
         }
 
         var amount = 0;
+	var data_count = 0;
         for (var i = 0; i < records.length; i++) {
             amount = amount + parseFloat(records[i].数値.value);
+	    data_count++;
         }
 
         var divTotalAmount = document.createElement('div');
@@ -53,7 +55,7 @@
         divTotalAmount.style.textAlign = 'right';
         divTotalAmount.style.fontSize = 12;
         var wString = String(amount.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
-        divTotalAmount.innerHTML = "\\" + wString + "-";
+        divTotalAmount.innerHTML = "\\" + wString + "- (" + data_coount + ")";
         kintone.app.record.getSpaceElement("TotalAmount").appendChild(divTotalAmount);
 
         return event;
