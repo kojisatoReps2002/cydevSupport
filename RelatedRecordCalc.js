@@ -6,11 +6,7 @@
     "use strict";
 
     //レコードの追加、編集、詳細画面で適用する
-    var events = [
-        'app.record.detail.show',
-        'app.record.edit.show'
-    ]
-    kintone.events.on(events, function(event) {
+    kintone.events.on(['app.record.detail.show', 'app.record.edit.show'], function(event) {
         var record = event.record;
         var client_rid = event.recordId;
         var related = kintone.app.getRelatedRecordsTargetAppId('関連レコード一覧');
@@ -19,8 +15,7 @@
         var records = new Array();
         while(!loop_end_flg){
             var query = '顧客情報レコード番号="' + client_rid +
-                '" and ドロップダウン not in ("受注")' +
-                ' limit 100 offset ' + offset;
+                '" and ドロップダウン not in ("受注") limit 100 offset ' + offset;
             query = encodeURIComponent(query);
             var appUrl = kintone.api.url('/k/v1/records') + '?app='+ related + '&query=' + query;
 
