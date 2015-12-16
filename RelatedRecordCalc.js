@@ -7,7 +7,6 @@
 
     //レコードの追加、編集、詳細画面で適用する
     kintone.events.on(['app.record.detail.show', 'app.record.edit.show'], function(event) {
-        var record = event.record;
         var client_rid = event.recordId;
         var related = kintone.app.getRelatedRecordsTargetAppId('関連レコード一覧');
         var offset = 0;
