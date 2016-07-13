@@ -32,8 +32,15 @@
       for (var i = 0; i < records.length; i++) {
         amount = amount + parseFloat(records[i].小計.value);
       }
-      record['見積金額']['value'] = amount;
-      kintone.app.record.set(record);
+      var divTotalAmount = document.createElement('div');
+      divTotalAmount.style.fontWeight = 'bold';
+      divTotalAmount.style.textAlign = 'right';
+      divTotalAmount.style.fontSize = 12;
+      var wString = String(amount.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+      divTotalAmount.innerHTML = "\\" + wString;
+      kintone.app.record.getSpaceElement("EstimateAmount").appendChild(divTotalAmount);
+      record['見積金額']['value'] = wString;
+
     });
 
     return event;
