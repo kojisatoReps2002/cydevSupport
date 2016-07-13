@@ -33,6 +33,7 @@
         amount = amount + parseFloat(records[i].小計.value);
       }
       record['見積金額']['value'] = amount;
+      kintone.app.record.set(record);
     });
 
     return event;
