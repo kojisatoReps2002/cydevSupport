@@ -13,8 +13,7 @@
         var loop_end_flg = false;
         var records = new Array();
         while(!loop_end_flg){
-            var query = '顧客情報レコード番号="' + client_rid +
-                '" and ドロップダウン not in ("受注") limit 100 offset ' + offset;
+            var query = '顧客情報レコード番号="' + client_rid + '" and ドロップダウン not in ("受注") limit 100 offset ' + offset;
             query = encodeURIComponent(query);
             var appUrl = kintone.api.url('/k/v1/records') + '?app='+ related + '&query=' + query;
 
