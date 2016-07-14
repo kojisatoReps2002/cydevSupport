@@ -1,5 +1,8 @@
 /**
  * Created by koji_sato on 2016/07/13.
+ * Live 45 の画面上の編集が効かないのと、そもそも計算を個々でやるのは不適切なので
+ * Child Application 側(見積明細)で更新処理を走らせるようにする。
+ * 従って、このjsは使用しない。
  */
 
 (function() {
