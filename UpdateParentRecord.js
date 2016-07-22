@@ -12,7 +12,7 @@
 
   kintone.events.on(events, function(event) {
     var related = kintone.app.getLookupTargetAppId('見積番号_lookup');
-    var estimateId = event.record['見積書レコード番号'].value, 10;
+    var estimateId = event.record['見積書レコード番号'].value;
     var requestParam = { "app": related, "id" : estimateId };
     var subTotal = parseInt(event.record['小計'].value, 10) || 0;
 
