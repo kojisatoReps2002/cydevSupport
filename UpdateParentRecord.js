@@ -9,7 +9,7 @@
     var related = kintone.app.getLookupTargetAppId('見積番号_lookup');
     var estimateId = parseInt(event.record['見積書レコード番号'].value, 10);
     var requestParam = { "app": related, "id" : estimateId };
-    var subTotal = parseInt(event.record['小計'].value, 10);
+    var subTotal = parseInt(event.record['小計'].value, 10) || 0;
 
     kintone.api(kintone.api.url('/k/v1/record', true), 'GET', requestParam,
       function(resp) {
