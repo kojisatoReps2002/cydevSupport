@@ -10,10 +10,9 @@
     'app.record.index.delete.submit'
   ];
 
-  //登録ボタン押下時に発火
   kintone.events.on(events, function(event) {
     var related = kintone.app.getLookupTargetAppId('見積番号_lookup');
-    var estimateId = parseInt(event.record['見積書レコード番号'].value, 10);
+    var estimateId = event.record['見積書レコード番号'].value, 10;
     var requestParam = { "app": related, "id" : estimateId };
     var subTotal = parseInt(event.record['小計'].value, 10) || 0;
 
@@ -22,7 +21,7 @@
         var amount = parseInt(resp.record['見積金額'].value, 10) || 0;
         amount = (event.type == 'app.record.create.submit') ? 
           amount + subTotal : amount - subTotal;
-        var revision = parseInt(resp.record['$revision'].value, 10);
+        var revision = resp.record['$revision'].value;
 
         kintone.api('/k/v1/record', 'PUT', {
 
