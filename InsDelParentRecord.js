@@ -23,11 +23,12 @@
     // 見積明細レコードの取得要求kintone api
     kintone.api(kintone.api.url('/k/v1/record', true), 'GET', requestParam,
       function(resp) {
-        // 成功した時は、見積アプリ見積金額更新情報を組み立てる
+        // 成功した時は、見積アプリ見積金額更新情報を計算する
         var amount = parseInt(resp.record['見積金額'].value, 10) || 0;
         // 追加時は加算、削除時は減算
         amount = (event.type == 'app.record.create.submit') ? 
           amount + subTotal : amount - subTotal;
+        // 失われた更新を避けるためにrevsionを取得
         var revision = resp.record['$revision'].value;
 
         kintone.api('/k/v1/record', 'PUT', {
