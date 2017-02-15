@@ -1,5 +1,8 @@
 /**
- * Created by koji_sato on 2016/07/14.
+ * Relational record of sample program
+ * Copyright (c) 2017 Cybozu
+ *
+ * Licensed under the MIT License
  */
 
 (function() {
@@ -18,7 +21,7 @@
         // 見積明細のルックアップ指定先見積アプリのアプリIDを取得する
         var related = kintone.app.getLookupTargetAppId('見積番号_lookup');
         // 見積明細のルックアップに設定された情報から見積レコードIDを取得する
-        var estimateId = event.record['見積書レコード番号'].value;
+        var estimateId = event.record['見積番号_lookup'].value;
         // 取得したID's からquery文字列を組み立てる
         var requestParam = { "app": related, "id": estimateId };
         // この見積明細の小計金額を保持する(一覧編集時計算フィールド対応)
